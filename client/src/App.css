@@ -1,0 +1,16 @@
+/* temp */
+.completed-box {
+    width: 2rem;
+    height: 2rem;
+
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.completed-box.checked {
+    background-color: greenyellow;
+}
+
+.list-info.checked {
+    text-decoration: line-through;
+}
