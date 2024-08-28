@@ -17,7 +17,7 @@ function App() {
 
         if (!userId) {
             return;
-        }
+        };
 
         async function getUser() {
             try {
@@ -43,33 +43,39 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <nav>
+                <nav id="main-nav">
                     {userToken && (
                         <ul>
                             <li>
                                 <Link to="/">Home</Link>
                             </li>
-                            <li>
-                                <Link to="/profile">Profile</Link>
-                            </li>
-                            <li>
-                                <p>
-                                    <button
-                                        onClick={() => {
-                                            localStorage.removeItem('token');
-                                            navigate('/login');
-                                        }}
-                                    >
-                                        Logout
-                                    </button>
-                                </p>
-                            </li>
-                            <li>
-                                <Link to={`/${user.username}/new-list`}>New List</Link>
-                            </li>
-                            <li>
-                                <Link to={`/${user.username}/lists`}>Lists</Link>
-                            </li>
+
+                            <div id="main-nav-list-links">
+                                <li>
+                                    <Link to={`/${user.username}/new-list`}>New List</Link>
+                                </li>
+                                <li>
+                                    <Link to={`/${user.username}/lists`}>Lists</Link>
+                                </li>    
+                            </div>
+
+                            <div id="main-nav-profile-links">
+                                <li>
+                                    Hello, <Link to={`/profile/${user.username}`} title={`${user.username}'s profile`}>{user.username}</Link>!
+                                </li>
+                                <li>
+                                    <p>
+                                        <button
+                                            onClick={() => {
+                                                localStorage.removeItem('token');
+                                                navigate('/login');
+                                            }}
+                                        >
+                                            Logout
+                                        </button>
+                                    </p>
+                                </li>
+                            </div>
                         </ul>
                     )}
                 </nav>

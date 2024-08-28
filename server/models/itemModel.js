@@ -4,7 +4,7 @@ const itemSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     listId: { type: mongoose.Schema.Types.ObjectId, ref: 'List', required: true },
     name: { type: String, required: true },
-    type: { type: String, enum: ['grocery', 'hygiene', 'clothing', 'tech', 'books', 'household', 'pet'], required: true },
+    type: { type: String, enum: ['general', 'grocery', 'hygiene', 'clothing', 'tech', 'books', 'household', 'pet'], default: 'general', required: true },
     notes: { type: String, default: "", required: false },
     price: { type: Number, default: 0, required: false },
     quantity: { type: Number, default: 1, required: true },

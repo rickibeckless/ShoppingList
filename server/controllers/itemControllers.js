@@ -18,9 +18,6 @@ const cItem = async (req, res) => {
             isPurchased,
         } = req.body;
 
-        // console.log("HEY:", userId);
-        // console.log("req.body:", req.body);
-
         const list = await List.findById(listId);
 
         if (!list) {
@@ -65,8 +62,6 @@ const rAItem = async (req, res) => {
 
 const uItem = async (req, res) => {
     try {
-        console.log("Request Body:", req.body);
-
         const { 
             userId,
             listId, 

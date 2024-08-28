@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 
 export default function List() {
-    //const { userId } = useContext(AuthContext);
     const userId = localStorage.getItem('userId');
     const { username, listId } = useParams();
 
@@ -14,7 +13,7 @@ export default function List() {
         userId: userId,
         listId,
         name: '', 
-        type: '', 
+        type: 'general', 
         notes: '',
         price: 0,
         quantity: 1, 
@@ -45,7 +44,6 @@ export default function List() {
                     throw new Error("Failed to fetch item data");
                 };
                 const data = await response.json();
-                console.log(data)
                 setItems(data);
             } catch (error) {
                 console.error(error);
@@ -73,10 +71,9 @@ export default function List() {
 
             if (!response.ok) {
                 alert(data.message);
+            } else {
+                closePopup();
             };
-
-            closePopup();
-
         } catch (error) {
             console.error(error);
         };
@@ -181,6 +178,7 @@ export default function List() {
                                 value={form.type}
                                 onChange={(e) => updateForm({ type: e.target.value })}
                             >
+                                <option value="general">general</option>
                                 <option value="grocery">grocery</option>
                                 <option value="hygiene">hygiene</option>
                                 <option value="clothing">clothing</option>

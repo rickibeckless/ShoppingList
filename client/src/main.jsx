@@ -10,6 +10,7 @@ import Signup from './pages/userPages/Signup.jsx';
 import NewList from './pages/listPages/NewList.jsx';
 import AllLists from './pages/listPages/AllLists.jsx';
 import List from './pages/listPages/List.jsx';
+import Profile from './pages/userPages/Profile.jsx';
 
 const router = createBrowserRouter([
     {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
             { path: '/', element: <Home /> },
             { path: '/signup', element: <Signup /> },
             { path: '/login', element: <Login /> },
+            { path: '/profile/:username', element: <Profile /> },
             { path: '/:username/new-list', element: <NewList />},
             { path: '/:username/lists', element: <AllLists />},
             { path: '/:username/lists/:listId', element: <List />},
