@@ -3,7 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 
 export default function List() {
-    const { userId } = useContext(AuthContext);
+    //const { userId } = useContext(AuthContext);
+    const userId = localStorage.getItem('userId');
     const { username, listId } = useParams();
 
     const [popup, setPopup] = useState(false);
@@ -72,7 +73,9 @@ export default function List() {
 
             if (!response.ok) {
                 alert(data.message);
-            }
+            };
+
+            closePopup();
 
         } catch (error) {
             console.error(error);

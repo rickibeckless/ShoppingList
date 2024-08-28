@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('userId');
         setUserId(null);
     };
 
@@ -24,6 +25,7 @@ export const AuthProvider = ({ children }) => {
             };
 
             setUserId(decodedToken.id);
+            localStorage.setItem('userId', decodedToken.id);
         } else {
             logout();
         };
@@ -33,6 +35,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem('token', token);
         const decodedToken = jwtDecode(token);
         setUserId(decodedToken.id);
+        localStorage.setItem('userId', decodedToken.id);
     };
 
     return (
