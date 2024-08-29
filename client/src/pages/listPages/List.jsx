@@ -57,7 +57,7 @@ export default function List() {
 
     async function handleItemAdd(e) {
         e.preventDefault();
-
+    
         try {
             const response = await fetch("http://localhost:8080/api/list/items/create", {
                 method: "POST",
@@ -66,14 +66,28 @@ export default function List() {
                 },
                 body: JSON.stringify(form),
             });
-
+    
             const data = await response.json();
-
+    
             if (!response.ok) {
                 alert(data.message);
             } else {
+                setItems(prevItems => [...prevItems, data]);
+    
+                setForm({
+                    userId: userId,
+                    listId,
+                    name: '', 
+                    type: 'general', 
+                    notes: '',
+                    price: 0,
+                    quantity: 1, 
+                    importance: 1,
+                    isPurchased: false,
+                });
+    
                 closePopup();
-            };
+            }
         } catch (error) {
             console.error(error);
         };

@@ -71,8 +71,6 @@ export default function AllLists() {
                                     </li>
                                 </>
                             ))}
-
-                            <li>Id: {list._id}</li>
                         </Link>
                     </ul>
                 ))}
