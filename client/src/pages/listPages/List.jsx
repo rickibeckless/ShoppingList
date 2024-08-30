@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import "../../css/listStyles/ListStyles.css";
+import "../../css/listStyles/generalListStyles.css";
 
 export default function List() {
     const userId = localStorage.getItem('userId');
@@ -54,6 +56,23 @@ export default function List() {
         getItemData();
         return;
     }, [userId, username, listId]);
+
+    async function deleteItem(itemId) {
+        try {
+            await fetch(`http://localhost:8080/api/list/items/${listId}/${itemId}/delete`, {
+                method: "DELETE",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            // figure out why this isn't deleting from the database
+
+            setItems((prevItems) => prevItems.filter((item) => item._id !== itemId));
+        } catch (error) {
+            console.error(error);
+        };
+    };
 
     async function handleItemAdd(e) {
         e.preventDefault();
@@ -168,6 +187,8 @@ export default function List() {
                         <li className={`${item.isPurchased ? 'checked' : ''} list-info`}>
                             {item.quantity}
                         </li>
+
+                        <button onClick={() => deleteItem(item._id)} className="danger-btn list-btn" id="list-delete-btn">Delete</button>
                     </React.Fragment>
                 ))}
 

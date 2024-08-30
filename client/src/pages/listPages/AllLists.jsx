@@ -1,6 +1,8 @@
 import { useEffect, useState, useContext } from "react";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import "../../css/listStyles/AllListsStyles.css";
+import "../../css/listStyles/generalListStyles.css";
 
 export default function AllLists() {
     const navigate = useNavigate();

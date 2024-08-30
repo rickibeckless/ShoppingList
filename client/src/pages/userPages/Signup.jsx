@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import "../../css/userStyles/accountFormStyles.css";
 
 export default function Signup() {
     const navigate = useNavigate();

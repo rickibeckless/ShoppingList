@@ -85,4 +85,24 @@ const uItem = async (req, res) => {
     };
 };
 
-export { cItem, rAItem, uItem };
+const dAItem = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        console.error(error);
+    };
+};
+
+const dItem = async (req, res) => {
+    try {
+        console.log("RAN")
+        
+        await List.findByIdAndDelete(req.params.id);
+        res.status(200).send();
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error deleting item.");
+    };
+};
+
+export { cItem, rAItem, uItem, dAItem, dItem };

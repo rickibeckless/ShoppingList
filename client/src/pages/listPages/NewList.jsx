@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import "../../css/listStyles/NewListStyles.css";
 
 export default function NewList() {
     const navigate = useNavigate();

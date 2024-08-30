@@ -1,0 +1,19 @@
+.all-lists-list {
+    padding: 2rem;
+    margin: 5vh 2vw;
+
+    width: 40vw;
+}
+
+#all-lists-list-link {
+    text-decoration: none;
+    color: black;
+}
+
+.all-lists-list-item {
+    border: 2px solid black;
+    padding: 1rem;
+    margin: 1rem;
+
+    width: 20vw;
+}

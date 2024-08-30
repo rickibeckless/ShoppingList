@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import "../../css/userStyles/accountFormStyles.css";
+import "../../css/userStyles/ProfileStyles.css";
 
 export default function Profile() {
     const userId = localStorage.getItem('userId');
