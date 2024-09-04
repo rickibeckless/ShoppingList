@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import { local_api_url } from '../../App.jsx';
 import "../../css/listStyles/ListStyles.css";
 import "../../css/listStyles/generalListStyles.css";
 
@@ -26,7 +27,7 @@ export default function List() {
     useEffect(() => {
         async function getListData() {
             try {
-                const response = await fetch(`http://localhost:8080/api/list/${userId}/${listId}`);
+                const response = await fetch(`${local_api_url}/api/list/${userId}/${listId}`);
 
                 if (!response.ok) {
                     throw new Error("Failed to fetch list data");
@@ -40,7 +41,7 @@ export default function List() {
 
         async function getItemData() {
             try {
-                const response = await fetch(`http://localhost:8080/api/list/items/${userId}/${listId}`);
+                const response = await fetch(`${local_api_url}/api/list/items/${userId}/${listId}`);
 
                 if (!response.ok) {
                     throw new Error("Failed to fetch item data");
@@ -59,7 +60,7 @@ export default function List() {
 
     async function deleteItem(itemId) {
         try {
-            await fetch(`http://localhost:8080/api/list/items/${listId}/${itemId}/delete`, {
+            await fetch(`${local_api_url}/api/list/items/${listId}/${itemId}/delete`, {
                 method: "DELETE",
                 headers: {
                     'Content-Type': 'application/json',
@@ -78,7 +79,7 @@ export default function List() {
         e.preventDefault();
     
         try {
-            const response = await fetch("http://localhost:8080/api/list/items/create", {
+            const response = await fetch(`${local_api_url}/api/list/items/create`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -132,7 +133,7 @@ export default function List() {
     
             const updatedIsPurchased = !itemToUpdate.isPurchased;
     
-            const response = await fetch(`http://localhost:8080/api/list/items/${id}/update`, {
+            const response = await fetch(`${local_api_url}/api/list/items/${id}/update`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

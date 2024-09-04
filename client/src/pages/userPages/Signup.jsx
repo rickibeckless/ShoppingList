@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { local_api_url } from '../../App.jsx';
 import "../../css/userStyles/accountFormStyles.css";
 
 export default function Signup() {
@@ -15,7 +16,7 @@ export default function Signup() {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:8080/api/user/signup', {
+            const response = await fetch(`${local_api_url}/api/user/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import { local_api_url } from '../../App.jsx';
 import "../../css/listStyles/AllListsStyles.css";
 import "../../css/listStyles/generalListStyles.css";
 
@@ -15,7 +16,7 @@ export default function AllLists() {
     useEffect(() => {
         async function getListData() {
             try {
-                const response = await fetch(`http://localhost:8080/api/list/${userId}`);
+                const response = await fetch(`${local_api_url}/api/list/${userId}`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch list data");
                 };
@@ -24,7 +25,7 @@ export default function AllLists() {
 
                 const itemsData = await Promise.all(
                     listData.map(async (list) => {
-                        const itemsResponse = await fetch(`http://localhost:8080/api/list/items/${userId}/${list._id}`);
+                        const itemsResponse = await fetch(`${local_api_url}/api/list/items/${userId}/${list._id}`);
                         if (itemsResponse.ok) {
                             const items = await itemsResponse.json();
                             return { listId: list._id, items };

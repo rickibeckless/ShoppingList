@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import { local_api_url } from '../../App.jsx';
 import "../../css/listStyles/NewListStyles.css";
 
 export default function NewList() {
@@ -20,7 +21,7 @@ export default function NewList() {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:8080/api/list/create", {
+            const response = await fetch(`${local_api_url}/api/list/create`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

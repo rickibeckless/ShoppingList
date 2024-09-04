@@ -2,7 +2,10 @@ import { useEffect, useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "./context/AuthContext";
 import { Outlet } from "react-router-dom";
+import LogoutBtn from "./components/LogoutBtn";
 import './App.css';
+
+export const local_api_url = import.meta.env.VITE_LOCAL_API_URL;
 
 function App() {
     const navigate = useNavigate();
@@ -21,7 +24,7 @@ function App() {
 
         async function getUser() {
             try {
-                const response = await fetch(`http://localhost:8080/api/user/${userId}`, {
+                const response = await fetch(`${local_api_url}/api/user/${userId}`, {
                     method: "GET",
                     headers: {
                         'Content-Type': 'application/json'
@@ -64,16 +67,7 @@ function App() {
                                     Hello, <Link to={`/profile/${user.username}`} title={`${user.username}'s profile`}>{user.username}</Link>!
                                 </li>
                                 <li>
-                                    <p>
-                                        <button
-                                            onClick={() => {
-                                                localStorage.removeItem('token');
-                                                navigate('/login');
-                                            }}
-                                        >
-                                            Logout
-                                        </button>
-                                    </p>
+                                    <LogoutBtn />
                                 </li>
                             </div>
                         </ul>

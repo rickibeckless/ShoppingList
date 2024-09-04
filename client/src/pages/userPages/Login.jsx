@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from '../../context/AuthContext';
+import { local_api_url } from '../../App.jsx';
 import "../../css/userStyles/accountFormStyles.css";
 
 export default function Login() {
@@ -18,7 +19,7 @@ export default function Login() {
         setError(null);
 
         try {
-            const res = await fetch("http://localhost:8080/api/user/login", {
+            const res = await fetch(`${local_api_url}/api/user/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
